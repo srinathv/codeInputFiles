@@ -1,0 +1,101 @@
+'***************************************************************'
+'* input for 3d slab code, comments at bottom                  *'
+'***************************************************************'
+'itube  ibase  iperi'
+   1      1      0
+
+'imx   jmx   kmx   mmx    nmx   nsmx   modemx  ntube icrs_sec ipg isphi'
+ 64    64    2   40000	 50000   3       4      1     0       7    0
+
+'im    jm    km         lxa      lymult    delra  nrst  eprs  nlow'
+ 64    64    2         0.25     0.118     0.05   100   0.1     1
+
+'dt     nm        nsm    xshape   yshape   zshape   ipf  isham   ishgk'
+ 4.0    40000      1       1.0     1.0     137.44    0     0       0
+
+'kymode   iput   iget     ision  ish   peritr llk mlk onemd izonal iflut kxz'
+  6        1      0       1       0      0     0   1    0     1      1    1
+
+'nplot   xnplt   modem  nzcrt  npze  npzi  npzc  npzb swgradti swgradte swgradn'
+ 100      10       4     4      16    8     8     8     1.0     1.0       1.0
+
+'cut    amp(0.01)    tor ishift  fradi  kxcut  kycut   bcut'
+ 1.0     1.e-2        1.    0     0.0    2.0    1.0     3000.
+
+'br0       r0a         q0       qp(.0625)      width      vpp       vt0    yd0'
+ 0.        0.56        0.       0.           10000000.   0.000      0.    0.00
+
+'c1    c2    c3    c4   ifluid  isg    amie    rneu  vexbsw vparsw'
+ 24.0  0.0   0.0   2.0     1    0.1    1837.    1.     1.0    0.0
+	
+'betasw  nonlin   nonline  ipara   vwidth vwidthe  vcut  isuni idg'
+ 1.0       1         1       0       8.     8.       3.     0    0
+
+'TRANSP profile-data-file name (char(32))'
+tr_D128527w02-345ext
+
+'***************species info************************************'
+
+'species 1:  mm 16108,32768    mion  qion   mimp   qimp  mbeam  qbeam  lr'
+               32768		2.    1.     12.     6.    2.     1.    4
+
+'            kappan 0.0022      kappat 0.0069     kapt(2)'
+                 0.0          0.00            0.00
+
+'nh     lh      ecpow      ehmax       ehmin    teth  iflr  iorb  iflrh'
+0.03    60.     10.        100.         10.     300.    1     1     0
+
+---------------------------------------------------------------
+comments placed here past reading of input data.
+test input for debugging ion temp. gradient mode run with xgrafix
+"absorbed" adiabatic electrons.
+---------------------------------------------------------------
+     Explaination of variables follows...
+---------------------------------------------------------------
+
+Length in rho_s, time in inverse omega_ci, velocity in c_s.
+
+imx,jmx,kmx are the no. of grid cells in x,y,z
+
+lx,ly,lz are the x,y,z, lengths of the system in rho_s.
+
+twod set to 1 causes averaging charge density in z, two get 
+clean 2d results one needs to comment out particle motion in z,
+in pushers, set twod=0 for 3d runs.
+
+ncar=1 to turn on ncar graphics, 0 to turn off ncar graphics 
+xgplot=1 to turn on xgrafix, 0 to turn off xgrafix
+
+dt,nm,nsm - delta t, no. of time steps, and number of species
+currently code allows two species (ions and electrons).
+
+xshape,yshape,zshape - Fourier filtering, multiply transformed phi
+by exp(- (shape dot k )^2 ).
+
+kymode is the zmode used for poloidal diagnostics
+
+nplot - plot snapshots when n mod nplot = 0, n the time step.
+xnplt - XGrafiX plot snapshots when n mod xnplt =0, n the time step.
+
+modem is the no. of slab modes to be plotted.
+
+contu,pskip - no. of contour lines plotted, plot every pskip particle.
+
+wmax - max. value for freq. spectrum.
+
+imovie - save ncsa hdf movie data when n mod imovie = 0,  
+if no movies are to be made imovie=0.
+
+Species info:
+
+  mm is the no. of particles for this species.
+  
+  tets is T_e/T_s, mims is M_i/M_s
+
+  q is q/e q=1. or -1. at this point.
+
+  lr is the no. of pts. for gyroaveraging.
+
+  kappan = -(grad n_s)/n_s, kappat = -(grad T_s)/T_s 
+
+---------------------------------------------------------------
