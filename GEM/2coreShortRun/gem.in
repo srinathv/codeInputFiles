@@ -11,7 +11,7 @@
  64    64    2         0.25     0.118     0.05   100   0.1     1
 
 'dt     nm        nsm    xshape   yshape   zshape   ipf  isham   ishgk'
- 4.0    40000      1       1.0     1.0     137.44    0     0       0
+ 4.0    2      1       1.0     1.0     137.44    0     0       0
 
 'kymode   iput   iget     ision  ish   peritr llk mlk onemd izonal iflut kxz'
   6        1      0       1       0      0     0   1    0     1      1    1
